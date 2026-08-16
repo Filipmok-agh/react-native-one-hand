@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "lib": ["ESNext"],
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    // Only the test files need these; consumers compile the published `src` with their own
+    // tsconfig, and __tests__/__mocks__ are excluded from the package (see package.json).
+    "types": ["jest", "node"],
+    // No `baseUrl` on purpose — it is deprecated in TS 6; bare `paths` resolve relative to
+    // this file.
+    "paths": {
+      // react-native-safe-area-context is an OPTIONAL peer dependency and is deliberately
+      // not installed here, so point tsc at the same stand-in Jest uses (jest.config.js).
+      // Only the tests import it by name — DockedInsets resolves it through an untyped
+      // try/catch require, which is what makes Metro treat it as optional.
+      "react-native-safe-area-context": ["./src/__mocks__/react-native-safe-area-context.tsx"]
+    }
+  },
+  "include": ["src"]
+}

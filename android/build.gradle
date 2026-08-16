@@ -1,0 +1,24 @@
+import groovy.json.JsonSlurper
+
+plugins {
+  id 'com.android.library'
+  id 'expo-module-gradle-plugin'
+}
+
+// Single source of truth for the version, like the podspec on iOS — hardcoding it here
+// guaranteed a silent drift from package.json on every release bump.
+def packageJson = new JsonSlurper().parseText(file('../package.json').text)
+
+group = 'react-native-one-hand'
+version = packageJson.version
+
+android {
+  namespace "expo.modules.onehand"
+  defaultConfig {
+    versionCode 1
+    versionName packageJson.version
+  }
+  lint {
+    abortOnError false
+  }
+}

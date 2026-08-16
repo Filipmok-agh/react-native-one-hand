@@ -1,0 +1,9 @@
+{
+  "platforms": ["apple", "android"],
+  "apple": {
+    "modules": ["OneHandWindowsModule"]
+  },
+  "android": {
+    "modules": ["expo.modules.onehand.OneHandWindowsModule"]
+  }
+}
