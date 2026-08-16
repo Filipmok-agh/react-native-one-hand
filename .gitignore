@@ -2,3 +2,9 @@ node_modules/
 *.log
 *.tsbuildinfo
 .DS_Store
+*.tgz
+.env*
+coverage/
+.claude/
+.cursor/
+.argent/
